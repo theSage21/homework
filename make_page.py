@@ -1,16 +1,20 @@
 import os
 import sys
 from PIL import Image
+import shutil
 
-if not os.path.exists('pages'):
-    print('Creating pages folder')
-    os.makedirs('pages')
+
+if os.path.exists('pages'):
+    shutil.rmtree('pages')
+print('Creating pages folder')
+os.makedirs('pages')
 
 try:
     line_count = sys.argv[1]
 except IndexError:
     line_count = 20
-    
+
+
 def make_page(lines, count):
     images = [Image.open(i) for i in lines]
     no_of_lines = len(lines)
@@ -23,11 +27,11 @@ def make_page(lines, count):
         im.thumbnail(size)
         page.paste(im, (0, offset))
         offset += 100
-    page.save('pages/'+str(count)+'.png')
+    page.save('pages/' + str(count) + '.png')
 
 
 lines = os.listdir('images')
-ranked_paths = [(int(i[:-4]),'images/'+i) for i in lines]
+ranked_paths = [(int(i[:-4]), 'images/' + i) for i in lines]
 ranked_paths.sort()
 paths = [i[1] for i in reversed(ranked_paths)]
 count = 1
