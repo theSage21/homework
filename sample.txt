@@ -3,7 +3,7 @@ Machine Learning
 Machine learning is a field of computer science that gives computers the ability to learn without being explicitly programmed.
 
 Arthur Samuel, an American pioneer in the field of computer gaming and artificial intelligence,
-oined the term "Machine Learning" in 1959 while at IBM. Evolved from the study of pattern recognition
+coined the term "Machine Learning" in 1959 while at IBM. Evolved from the study of pattern recognition
 and computational learning theory in artificial intelligence, machine learning explores the
 study and construction of algorithms that can learn from and make predictions on data – such algorithms overcome
 following strictly static program instructions by making data-driven predictions or decisions, through building a

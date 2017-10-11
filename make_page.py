@@ -1,10 +1,11 @@
 import os
 import sys
 from PIL import Image
+import shutil
 
 
 if os.path.exists('pages'):
-    os.rmdir('pages')
+    shutil.rmtree('pages')
 print('Creating pages folder')
 os.makedirs('pages')
 
