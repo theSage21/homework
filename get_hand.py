@@ -34,9 +34,9 @@ try:
 except IndexError:
     pass
 
-if not os.path.exists('images'):
-    print('Creating images folder')
-    os.makedirs('images')
+os.remove('images')
+print('Creating images folder')
+os.makedirs('images')
 
  
 
