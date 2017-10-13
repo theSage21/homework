@@ -8,15 +8,8 @@ def get_handwriting(text, bias=0.8, samples=1):
                'style': '../data/trainset_diff_no_start_all_labels.nc,1082+554',
                'bias': bias,
                'samples': samples}
-    headers = {'Host': 'www.cs.toronto.edu',
-               'User-Agent': 'Mozilla/5.0 (X11; Linux i686; rv:43.0) Gecko/20100101 Firefox/43.0',
-               'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-               'Referrer': 'http://www.cs.toronto.edu/~graves/handwriting.cgi',
-               'Connection': 'keep-alive',
-               'Accept-Language': 'en-US,en;q=0.5',
-               'Accept-Encoding': 'gzip, deflate'}
     url = 'http://www.cs.toronto.edu/~graves/handwriting.cgi'
-    page = requests.get(url, headers=headers, params=payload)
+    page = requests.get(url, params=payload)
     text = page.text
     print('.', end='')
     search_string = '<img src="data:image/jpeg;base64,'
