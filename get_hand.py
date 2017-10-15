@@ -1,8 +1,10 @@
 import argparse
+
 import os
 import sys
 import base64
 import requests
+from PIL import Image
 
 
 def get_arguments():
@@ -21,6 +23,9 @@ def get_arguments():
     parser.add_argument(
         '-p', '--position', help='start at specific position',
         type=int, default=0)
+    parser.add_argument(
+        '-c', '--color', help='add custom RGB color values to generated text',
+        type=str, default='0,0,0')
 
     return parser.parse_args()
 
@@ -41,6 +46,18 @@ def get_handwriting(text, bias=0.8, samples=1):
     return image_str
 
 
+def add_color(color, image_out):
+    img = Image.open(image_out)
+    width, height = img.size
+    for x in range(0, width):
+        for y in range(0, height):
+            old_color = list(img.getpixel((x, y)))
+            new_color = [old_color[x] + color[x]
+                         for x in range(3)]
+            img.putpixel((x, y), tuple(new_color))
+    img.save(image_out)
+
+
 def command_line():
     args = get_arguments()
 
@@ -52,6 +69,11 @@ def command_line():
 
     start_at = args.position
     bias = args.bias
+
+    color = args.color
+    color = color.replace(' ', '')
+    color = color.split(',')
+    color = list(map(int, color))
 
     if not os.path.exists('images'):
         print('Creating images folder')
@@ -69,6 +91,9 @@ def command_line():
             with open(image_out, 'wb') as fl:
                 fl.write(x)
             print('|')
+
+    if not color == [0,0,0]:
+        add_color(color, image_out)
 
 
 if __name__ == '__main__':
