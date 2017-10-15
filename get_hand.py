@@ -59,8 +59,8 @@ def get_handwriting(text, style, bias, samples=1):
 def add_color(color, image_out):
     img = Image.open(image_out)
     width, height = img.size
-    for x in range(0, width):
-        for y in range(0, height):
+    for x in range(width):
+        for y in range(height):
             old_color = list(img.getpixel((x, y)))
             new_color = [old_color[x] + color[x]
                          for x in range(3)]
