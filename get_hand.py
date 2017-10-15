@@ -101,10 +101,9 @@ def command_line():
             image_out = os.path.join('images', str(index) + '.png')
             with open(image_out, 'wb') as fl:
                 fl.write(x)
+            if not color == [0, 0, 0]:
+                add_color(color, image_out)
             print('|')
-
-    if not color == [0, 0, 0]:
-        add_color(color, image_out)
 
 
 if __name__ == '__main__':
