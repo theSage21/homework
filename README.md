@@ -33,7 +33,7 @@ optional arguments:
 Example
 -------
 
-Generating handwritten text page from a file (with no more than 100 characters in each line) with handwriting style 4:
+**Generating handwritten text page from a file (with no more than 100 characters in each line) with handwriting style 4:**
 ```
 python get_hand.py -f desc.txt -s 4
 python make_page.py
@@ -42,7 +42,7 @@ Now open `pages/1.png`:
 
 ![sample handwriting](https://i.imgur.com/9SPwYnd.png)
 
-Generating handwritten text using a string in blue color & custom bias with handwriting style 2:
+**Generating handwritten text using a string in blue color & custom bias with handwriting style 2:**
 ```
 python get_hand.py -t "Homework could have been easier" -s 2 -c 0,0,200 -b 0.85
 ```
